@@ -7,4 +7,13 @@ if [ "$(whoami)" != "root" ]; then
     exit
 fi
 
+dpkg-reconfigure tzdata
+dpkg-reconfigure locales
+
+apt-get update && apt-get upgrade -y
 apt-get intall sudo git salt-daemon salt-minion
+
+username="willem"
+
+useradd $username
+adduser $username sudo
